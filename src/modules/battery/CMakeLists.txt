@@ -21,5 +21,7 @@ target_include_directories(${MODULE_NAME} PUBLIC
 )
 
 target_link_libraries(${MODULE_NAME}
-    stdc++fs
+    PRIVATE
+        types
+        stdc++fs
 )

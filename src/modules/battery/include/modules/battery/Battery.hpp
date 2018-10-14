@@ -1,8 +1,13 @@
 #pragma once
-#include <string>
+#include "types/modules/Module.hpp"
 
 namespace modules {
 namespace battery {
-    std::string getBatteryLevel();
+    struct Battery final : public types::modules::Module {
+        std::string printModule() override;
+
+    private:
+        std::string getBatteryLevel();
+    };
 }
 }
