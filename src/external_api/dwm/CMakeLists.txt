@@ -8,7 +8,7 @@ set(SOURCES
 )
 
 set(HEADERS
-    include/external_api/dwm/Dwm.hpp
+    include/external_api/Dwm.hpp
 )
 
 add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})
