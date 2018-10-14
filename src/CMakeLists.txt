@@ -10,6 +10,7 @@ add_executable(dwm-statusbar
 target_link_libraries(dwm-statusbar
     external_api::dwm
     modules::battery
+    modules::separator
     modules::time
     status_bar
 )

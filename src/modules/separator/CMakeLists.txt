@@ -1,14 +1,14 @@
-set(MODULE_NAME battery)
+set(MODULE_NAME separator)
 project(${MODULE_NAME} CXX)
 
 message(STATUS "Configuring ${MODULE_NAME}")
 
 set(SOURCES
-    src/Battery.cpp
+    src/Separator.cpp
 )
 
 set(HEADERS
-    include/modules/Battery.hpp
+    include/modules/Separator.hpp
 )
 
 add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})
@@ -23,5 +23,4 @@ target_include_directories(${MODULE_NAME} PUBLIC
 target_link_libraries(${MODULE_NAME}
     PRIVATE
         types
-        stdc++fs
 )

@@ -9,6 +9,6 @@ public:
     std::string getBar() const;
 
 private:
-    BarSegments segments;
+    const BarSegments segments;
 };
 };

@@ -1,10 +1,10 @@
-#include "modules/time/Time.hpp"
+#include "modules/Time.hpp"
 #include <chrono>
 #include <ctime>
 #include <iomanip>
 #include <sstream>
 
-std::string modules::time::Time::actualTime()
+std::string modules::Time::actualTime()
 {
     auto now = std::chrono::system_clock::now();
     auto in_time_t = std::chrono::system_clock::to_time_t(now);
@@ -14,7 +14,7 @@ std::string modules::time::Time::actualTime()
     return ss.str();
 }
 
-std::string modules::time::Time::printModule()
+std::string modules::Time::printModule()
 {
     return actualTime();
 }

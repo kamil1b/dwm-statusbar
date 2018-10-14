@@ -8,7 +8,7 @@ set(SOURCES
 )
 
 set(HEADERS
-    include/modules/time/Time.hpp
+    include/modules/Time.hpp
 )
 
 add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})

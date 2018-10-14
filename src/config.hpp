@@ -1,28 +1,26 @@
 #pragma once
-#include "modules/battery/Battery.hpp"
-#include "modules/time/Time.hpp"
+#include "modules/Battery.hpp"
+#include "modules/Separator.hpp"
+#include "modules/Time.hpp"
 #include "status_bar/BarSegment.hpp"
+#include "types/modules/Module.hpp"
 
 namespace {
-modules::battery::Battery batteryModule{};
-modules::time::Time timeModule{};
-}
+modules::Battery batteryModule{};
+modules::Time timeModule{};
+modules::Separator separator{};
 
 template <typename Module>
-auto bind(Module module)
+auto addSegment(Module module)
 {
     return std::bind(&types::modules::Module::printModule, module);
+}
 }
 
 status_bar::BarSegments segments{
     {
-        {
-            "Battery: ",
-            bind(batteryModule),
-        },
-        {
-            "",
-            bind(timeModule),
-        },
+        addSegment(batteryModule),
+        addSegment(separator),
+        addSegment(timeModule),
     },
 };
