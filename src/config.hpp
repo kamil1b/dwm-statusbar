@@ -11,9 +11,9 @@ modules::Time timeModule{};
 modules::Separator separator{};
 
 template <typename Module>
-auto addSegment(Module module)
+auto addSegment(Module& module)
 {
-    return std::bind(&types::modules::Module::printModule, module);
+    return std::bind(&types::modules::Module::printModule, &module);
 }
 }
 

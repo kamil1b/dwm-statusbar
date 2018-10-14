@@ -1,17 +1,17 @@
 #include "modules/Battery.hpp"
 #include <filesystem>
-#include <fstream>
 
 namespace {
-const std::filesystem::path battery_path{ "/sys/class/power_supply/BAT0/capacity" };
-};
+const std::filesystem::path batteryPath{ "/sys/class/power_supply/BAT0/capacity" };
+}
 
 std::string modules::Battery::getBatteryLevel()
 {
-    std::ifstream ifstream{ battery_path };
-    int battery_level;
-    ifstream >> battery_level;
-    return std::to_string(battery_level) + "%";
+    batteryLevelFile.open(batteryPath);
+    int batteryLevel;
+    batteryLevelFile >> batteryLevel;
+    batteryLevelFile.close();
+    return std::to_string(batteryLevel) + "%";
 }
 
 std::string modules::Battery::printModule()
