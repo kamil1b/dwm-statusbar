@@ -3,7 +3,7 @@
 #include <fstream>
 
 namespace modules {
-struct Battery final : public types::Module {
+struct BatteryLevel final : public types::Module {
     std::string printModule() override;
 
 private:

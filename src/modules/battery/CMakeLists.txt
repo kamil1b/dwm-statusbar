@@ -4,11 +4,13 @@ project(${MODULE_NAME} CXX)
 message(STATUS "Configuring ${MODULE_NAME}")
 
 set(SOURCES
-    src/Battery.cpp
+    src/BatteryLevel.cpp
+    src/BatteryStatus.cpp
 )
 
 set(HEADERS
-    include/modules/Battery.hpp
+    include/modules/BatteryLevel.hpp
+    include/modules/BatteryStatus.hpp
 )
 
 add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})
