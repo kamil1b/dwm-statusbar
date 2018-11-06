@@ -8,4 +8,4 @@ struct Time final : public types::Module {
 private:
     std::string actualTime();
 };
-};
+}

@@ -12,4 +12,4 @@ using BarSegment = std::function<std::string()>;
 using BarSegments = std::vector<BarSegment>;
 
 status_bar::BarSegment addSegment(types::Module& module);
-};
+}
