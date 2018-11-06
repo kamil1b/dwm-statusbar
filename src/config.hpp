@@ -3,24 +3,17 @@
 #include "modules/Separator.hpp"
 #include "modules/Time.hpp"
 #include "status_bar/BarSegment.hpp"
-#include "types/modules/Module.hpp"
 
 namespace {
-modules::Battery batteryModule{};
-modules::Time timeModule{};
-modules::Separator separator{};
-
-template <typename Module>
-auto addSegment(Module& module)
-{
-    return std::bind(&types::modules::Module::printModule, &module);
-}
+modules::Battery batteryModule {};
+modules::Time timeModule {};
+modules::Separator separator {};
 }
 
-status_bar::BarSegments segments{
+status_bar::BarSegments segments {
     {
-        addSegment(batteryModule),
-        addSegment(separator),
-        addSegment(timeModule),
+        status_bar::addSegment(batteryModule),
+        status_bar::addSegment(separator),
+        status_bar::addSegment(timeModule),
     },
 };

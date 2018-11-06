@@ -1,8 +1,8 @@
 #pragma once
-#include "types/modules/Module.hpp"
+#include "types/Module.hpp"
 
 namespace modules {
-struct Time final : public types::modules::Module {
+struct Time final : public types::Module {
     std::string printModule() override;
 
 private:

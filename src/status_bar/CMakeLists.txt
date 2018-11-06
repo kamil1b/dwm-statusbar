@@ -5,6 +5,7 @@ message(STATUS "Configuring ${MODULE_NAME}")
 
 set(SOURCES
     src/StatusBar.cpp
+    src/BarSegment.cpp
 )
 
 set(HEADERS
@@ -17,4 +18,9 @@ add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})
 target_include_directories(${MODULE_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
+)
+
+target_link_libraries(${MODULE_NAME}
+    PRIVATE
+        types
 )

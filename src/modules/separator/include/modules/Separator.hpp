@@ -1,8 +1,8 @@
 #pragma once
-#include "types/modules/Module.hpp"
+#include "types/Module.hpp"
 
 namespace modules {
-struct Separator final : public types::modules::Module {
+struct Separator final : public types::Module {
     explicit Separator(std::string separator = " | ");
     std::string printModule() override;
 
