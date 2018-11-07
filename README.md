@@ -1,5 +1,6 @@
 # dwm-statusbar
 
+[![Build Status](https://travis-ci.com/kamil1b/dwm-statusbar.svg?branch=master)](https://travis-ci.com/kamil1b/dwm-statusbar)
 
 
 # Build
