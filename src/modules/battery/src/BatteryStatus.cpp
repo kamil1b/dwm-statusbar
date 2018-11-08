@@ -1,7 +1,6 @@
 #include "modules/BatteryStatus.hpp"
 #include "types/BatteryStatus.hpp"
 #include <exception>
-#include <fstream>
 #include <string>
 
 namespace {
@@ -32,19 +31,16 @@ std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, con
 
 modules::BatteryStatus::BatteryStatus(
     const types::BatteryStatusLabels& statusLabels,
-    const std::filesystem::path& statusPath)
-    : statusLabels(statusLabels)
-    , statusPath(statusPath)
+    std::unique_ptr<modules::BatteryInterface>&& batteryInterface)
+    : statusLabels { statusLabels }
+    , batteryInterface { std::move(batteryInterface) }
 {
     ;
 }
 
 std::string modules::BatteryStatus::getBatteryStatus() const
 {
-    std::ifstream batteryStatusFile { statusPath };
-    std::string status;
-    batteryStatusFile >> status;
-    batteryStatusFile.close();
+    const auto status = batteryInterface->getBatteryData();
     const auto batteryStatus { convertToBatteryStatus(status) };
     return getBatteryStatusLabel(batteryStatus, {});
 }

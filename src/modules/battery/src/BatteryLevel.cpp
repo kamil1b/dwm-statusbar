@@ -1,17 +1,14 @@
 #include "modules/BatteryLevel.hpp"
-#include <filesystem>
 
-namespace {
-const std::filesystem::path batteryLevelPath { "/sys/class/power_supply/BAT0/capacity" };
+modules::BatteryLevel::BatteryLevel(std::unique_ptr<modules::BatteryInterface>&& batteryInterface)
+    : batteryInterface { std::move(batteryInterface) }
+{
 }
 
 std::string modules::BatteryLevel::getBatteryLevel()
 {
-    batteryLevelFile.open(batteryLevelPath);
-    int batteryLevel;
-    batteryLevelFile >> batteryLevel;
-    batteryLevelFile.close();
-    return std::to_string(batteryLevel) + "%";
+    const auto batteryLevel = batteryInterface->getBatteryData();
+    return batteryLevel + "%";
 }
 
 std::string modules::BatteryLevel::printModule()

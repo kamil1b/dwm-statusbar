@@ -6,11 +6,14 @@ message(STATUS "Configuring ${MODULE_NAME}")
 set(SOURCES
     src/BatteryLevel.cpp
     src/BatteryStatus.cpp
+    src/ConcreteBatteryInterface.cpp
 )
 
 set(HEADERS
     include/modules/BatteryLevel.hpp
     include/modules/BatteryStatus.hpp
+    include/modules/BatteryInterface.hpp
+    include/modules/ConcreteBatteryInterface.hpp
 )
 
 add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})
