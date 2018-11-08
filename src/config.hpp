@@ -11,14 +11,14 @@ namespace {
 const std::filesystem::path batteryStatusPath { "/sys/class/power_supply/BAT0/status" };
 const std::filesystem::path batteryLevelPath { "/sys/class/power_supply/BAT0/capacity" };
 
-auto batteryLevelInterface = std::make_unique<modules::ConcreteBatteryInterface>(batteryLevelPath);
-auto batteryStatusInterface = std::make_unique<modules::ConcreteBatteryInterface>(batteryStatusPath);
+modules::ConcreteBatteryInterface batteryLevelInterface { batteryLevelPath };
+modules::ConcreteBatteryInterface batteryStatusInterface = { batteryStatusPath };
 modules::BatteryLevel batteryLevelModule {
-    std::move(batteryLevelInterface),
+    batteryLevelInterface,
 };
 modules::BatteryStatus batteryStatusModule {
     {},
-    std::move(batteryStatusInterface),
+    batteryStatusInterface,
 };
 modules::Time timeModule {};
 modules::Separator separator {};

@@ -31,16 +31,15 @@ std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, con
 
 modules::BatteryStatus::BatteryStatus(
     const types::BatteryStatusLabels& statusLabels,
-    std::unique_ptr<modules::BatteryInterface>&& batteryInterface)
+    modules::BatteryInterface& batteryInterface)
     : statusLabels { statusLabels }
-    , batteryInterface { std::move(batteryInterface) }
+    , batteryInterface { batteryInterface }
 {
-    ;
 }
 
 std::string modules::BatteryStatus::getBatteryStatus() const
 {
-    const auto status = batteryInterface->getBatteryData();
+    const auto status = batteryInterface.getBatteryData();
     const auto batteryStatus { convertToBatteryStatus(status) };
     return getBatteryStatusLabel(batteryStatus, {});
 }
