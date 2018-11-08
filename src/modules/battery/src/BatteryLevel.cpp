@@ -1,13 +1,13 @@
 #include "modules/BatteryLevel.hpp"
 
-modules::BatteryLevel::BatteryLevel(std::unique_ptr<modules::BatteryInterface>&& batteryInterface)
-    : batteryInterface { std::move(batteryInterface) }
+modules::BatteryLevel::BatteryLevel(modules::BatteryInterface& batteryInterface)
+    : batteryInterface { batteryInterface }
 {
 }
 
 std::string modules::BatteryLevel::getBatteryLevel()
 {
-    const auto batteryLevel = batteryInterface->getBatteryData();
+    const auto batteryLevel = batteryInterface.getBatteryData();
     return batteryLevel + "%";
 }
 

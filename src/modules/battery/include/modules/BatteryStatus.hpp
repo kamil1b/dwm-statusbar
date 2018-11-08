@@ -8,12 +8,12 @@ namespace modules {
 struct BatteryStatus final : public types::Module {
     BatteryStatus(
         const types::BatteryStatusLabels& statusLabels,
-        std::unique_ptr<modules::BatteryInterface>&& batteryInterface);
+        modules::BatteryInterface& batteryInterface);
     std::string printModule() override;
 
 private:
     std::string getBatteryStatus() const;
     const types::BatteryStatusLabels statusLabels;
-    std::unique_ptr<modules::BatteryInterface> batteryInterface;
+    modules::BatteryInterface& batteryInterface;
 };
 }
