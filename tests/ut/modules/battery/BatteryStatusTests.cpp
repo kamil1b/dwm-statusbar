@@ -1,8 +1,9 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <string>
-#include "modules/BatteryInterface.hpp"
+#include "helpers/mocks/BatteryInterfaceMock.hpp"
 #include "modules/BatteryStatus.hpp"
+#include "types/BatteryStatusLabels.hpp"
 
 namespace {
 std::string dischargingLabel{"D"};
@@ -14,14 +15,6 @@ types::BatteryStatusLabels statusLabels{
     acLabel,
 };
 }  // namespace
-
-namespace helpers {
-namespace mocks {
-struct BatteryInterfaceMock final : public modules::BatteryInterface {
-    MOCK_METHOD0(getBatteryData, std::string());
-};
-}  // namespace mocks
-}  // namespace helpers
 
 struct BatteryStatusFixture : public ::testing::Test {
     modules::BatteryStatus batteryStatus;
