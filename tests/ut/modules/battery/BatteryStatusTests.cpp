@@ -1,6 +1,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <string>
+#include <vector>
 #include "helpers/mocks/BatteryInterfaceMock.hpp"
 #include "modules/BatteryStatus.hpp"
 #include "types/BatteryStatusLabels.hpp"
@@ -14,9 +15,18 @@ types::BatteryStatusLabels statusLabels{
     chargingLabel,
     acLabel,
 };
+struct testParam {
+    std::string statusLabel;
+    types::BatteryStatus batteryStatus;
+};
+std::vector<testParam> testParams{
+    {dischargingLabel, types::BatteryStatus::Discharging},
+    {chargingLabel, types::BatteryStatus::Charging},
+    {acLabel, types::BatteryStatus::AC},
+};
 }  // namespace
 
-struct BatteryStatusFixture : public ::testing::Test {
+struct BatteryStatusFixture : public ::testing::TestWithParam<testParam> {
     modules::BatteryStatus batteryStatus;
     helpers::mocks::BatteryInterfaceMock batteryInterfaceMock;
 
@@ -25,7 +35,8 @@ struct BatteryStatusFixture : public ::testing::Test {
         : batteryStatus(statusLabels, batteryInterfaceMock) {}
 };
 
-TEST_F(BatteryStatusFixture, SelectCharginLabel) {
+TEST_P(BatteryStatusFixture, SelectLabel) {
+    const auto testParam = GetParam();
     EXPECT_CALL(batteryInterfaceMock, getBatteryStatus())
         .WillOnce(::testing::Return(types::BatteryStatus::Charging));
 
@@ -33,18 +44,5 @@ TEST_F(BatteryStatusFixture, SelectCharginLabel) {
     EXPECT_EQ(status, chargingLabel);
 }
 
-TEST_F(BatteryStatusFixture, SelectDischargingLabel) {
-    EXPECT_CALL(batteryInterfaceMock, getBatteryStatus())
-        .WillOnce(::testing::Return(types::BatteryStatus::Discharging));
-
-    auto status = batteryStatus.printModule();
-    EXPECT_EQ(status, dischargingLabel);
-}
-
-TEST_F(BatteryStatusFixture, SelectACLabel) {
-    EXPECT_CALL(batteryInterfaceMock, getBatteryStatus())
-        .WillOnce(::testing::Return(types::BatteryStatus::AC));
-
-    auto status = batteryStatus.printModule();
-    EXPECT_EQ(status, acLabel);
-}
+INSTANTIATE_TEST_CASE_P(BatteryStatusTests, BatteryStatusFixture,
+                        ::testing::ValuesIn(testParams));
