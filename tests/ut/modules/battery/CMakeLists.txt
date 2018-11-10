@@ -1,9 +1,11 @@
 add_executable(${PROJECT_NAME}-battery-ut
+  BatteryLevelTests.cpp
   BatteryStatusTests.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}-battery-ut
   modules::battery
+  helpers::mocks
   gtest
   gmock
   gtest_main
@@ -11,7 +13,6 @@ target_link_libraries(${PROJECT_NAME}-battery-ut
 
 target_include_directories(${PROJECT_NAME}-battery-ut
   PRIVATE
-  # ${PROJECT_SOURCE_DIR}/src
   ${PROJECT_SOURCE_DIR}/3rdparty/gtest
 )
 
