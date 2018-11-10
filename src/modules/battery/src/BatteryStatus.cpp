@@ -4,17 +4,6 @@
 #include <string>
 
 namespace {
-types::BatteryStatus convertToBatteryStatus(const std::string& batteryStatus)
-{
-    if (batteryStatus == "Discharging") {
-        return types::BatteryStatus::Discharging;
-    } else if (batteryStatus == "Charging") {
-        return types::BatteryStatus::Charging;
-    }
-    return types::BatteryStatus::AC;
-
-    //TODO: add error handling
-}
 std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, const types::BatteryStatusLabels& batteryStatusLabels)
 {
     switch (batteryStatus) {
@@ -27,11 +16,11 @@ std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, con
     }
     throw std::out_of_range { "Out of range types::BatteryStatus" };
 }
-}
+} // namespace
 
 modules::BatteryStatus::BatteryStatus(
     const types::BatteryStatusLabels& statusLabels,
-    modules::BatteryInterface& batteryInterface)
+    interfaces::BatteryInterface& batteryInterface)
     : statusLabels { statusLabels }
     , batteryInterface { batteryInterface }
 {
@@ -39,8 +28,7 @@ modules::BatteryStatus::BatteryStatus(
 
 std::string modules::BatteryStatus::getBatteryStatus() const
 {
-    const auto status = batteryInterface.getBatteryData();
-    const auto batteryStatus { convertToBatteryStatus(status) };
+    const auto batteryStatus = batteryInterface.getBatteryStatus();
     return getBatteryStatusLabel(batteryStatus, {});
 }
 

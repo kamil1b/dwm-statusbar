@@ -19,7 +19,7 @@ struct BatteryLevelFixture : public ::testing::TestWithParam<int> {
 TEST_P(BatteryLevelFixture, GetBatteryLevel) {
     const auto batteryLevel = std::to_string(GetParam());
     const auto expectedBatteryLevel = batteryLevel + endSign;
-    EXPECT_CALL(batteryInterfaceMock, getBatteryData())
+    EXPECT_CALL(batteryInterfaceMock, getBatteryLevel())
         .WillOnce(::testing::Return(batteryLevel));
 
     auto returnedBatteryLevel = batteryLevelModule.printModule();

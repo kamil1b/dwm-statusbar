@@ -1,24 +1,20 @@
 #pragma once
+#include "interfaces/battery_interface/ConcreteBatteryInterface.hpp"
 #include "modules/BatteryLevel.hpp"
 #include "modules/BatteryStatus.hpp"
-#include "modules/ConcreteBatteryInterface.hpp"
 #include "modules/Separator.hpp"
 #include "modules/Time.hpp"
 #include "status_bar/BarSegment.hpp"
 #include <memory>
 
 namespace {
-const std::filesystem::path batteryStatusPath { "/sys/class/power_supply/BAT0/status" };
-const std::filesystem::path batteryLevelPath { "/sys/class/power_supply/BAT0/capacity" };
-
-modules::ConcreteBatteryInterface batteryLevelInterface { batteryLevelPath };
-modules::ConcreteBatteryInterface batteryStatusInterface = { batteryStatusPath };
+interfaces::ConcreteBatteryInterface batteryInterface {};
 modules::BatteryLevel batteryLevelModule {
-    batteryLevelInterface,
+    batteryInterface,
 };
 modules::BatteryStatus batteryStatusModule {
     {},
-    batteryStatusInterface,
+    batteryInterface,
 };
 modules::Time timeModule {};
 modules::Separator separator {};

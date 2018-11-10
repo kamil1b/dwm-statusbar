@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
-#include "modules/BatteryInterface.hpp"
+#include "interfaces/battery_interface/BatteryInterface.hpp"
 
 namespace helpers {
 namespace mocks {
-struct BatteryInterfaceMock final : public modules::BatteryInterface {
-    MOCK_METHOD0(getBatteryData, std::string());
+struct BatteryInterfaceMock final : public interfaces::BatteryInterface {
+    MOCK_METHOD0(getBatteryLevel, std::string());
+    MOCK_METHOD0(getBatteryStatus, types::BatteryStatus());
 };
 }  // namespace mocks
 }  // namespace helpers

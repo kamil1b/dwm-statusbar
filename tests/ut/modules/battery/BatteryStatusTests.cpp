@@ -26,27 +26,24 @@ struct BatteryStatusFixture : public ::testing::Test {
 };
 
 TEST_F(BatteryStatusFixture, SelectCharginLabel) {
-    std::string returnedStatus = "Charging";
-    EXPECT_CALL(batteryInterfaceMock, getBatteryData())
-        .WillOnce(::testing::Return(returnedStatus));
+    EXPECT_CALL(batteryInterfaceMock, getBatteryStatus())
+        .WillOnce(::testing::Return(types::BatteryStatus::Charging));
 
     auto status = batteryStatus.printModule();
     EXPECT_EQ(status, chargingLabel);
 }
 
-TEST_F(BatteryStatusFixture, SelectDischarginLabel) {
-    std::string returnedStatus = "Discharging";
-    EXPECT_CALL(batteryInterfaceMock, getBatteryData())
-        .WillOnce(::testing::Return(returnedStatus));
+TEST_F(BatteryStatusFixture, SelectDischargingLabel) {
+    EXPECT_CALL(batteryInterfaceMock, getBatteryStatus())
+        .WillOnce(::testing::Return(types::BatteryStatus::Discharging));
 
     auto status = batteryStatus.printModule();
     EXPECT_EQ(status, dischargingLabel);
 }
 
 TEST_F(BatteryStatusFixture, SelectACLabel) {
-    std::string returnedStatus = "AC";
-    EXPECT_CALL(batteryInterfaceMock, getBatteryData())
-        .WillOnce(::testing::Return(returnedStatus));
+    EXPECT_CALL(batteryInterfaceMock, getBatteryStatus())
+        .WillOnce(::testing::Return(types::BatteryStatus::AC));
 
     auto status = batteryStatus.printModule();
     EXPECT_EQ(status, acLabel);

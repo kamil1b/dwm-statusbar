@@ -1,5 +1,5 @@
 #pragma once
-#include "modules/BatteryInterface.hpp"
+#include "interfaces/battery_interface/BatteryInterface.hpp"
 #include "types/BatteryStatusLabels.hpp"
 #include "types/Module.hpp"
 #include <memory>
@@ -8,12 +8,12 @@ namespace modules {
 struct BatteryStatus final : public types::Module {
     BatteryStatus(
         const types::BatteryStatusLabels& statusLabels,
-        modules::BatteryInterface& batteryInterface);
+        interfaces::BatteryInterface& batteryInterface);
     std::string printModule() override;
 
 private:
     std::string getBatteryStatus() const;
     const types::BatteryStatusLabels statusLabels;
-    modules::BatteryInterface& batteryInterface;
+    interfaces::BatteryInterface& batteryInterface;
 };
 }

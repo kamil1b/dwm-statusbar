@@ -1,15 +1,15 @@
 #pragma once
-#include "modules/BatteryInterface.hpp"
+#include "interfaces/battery_interface/BatteryInterface.hpp"
 #include "types/Module.hpp"
 #include <memory>
 
 namespace modules {
 struct BatteryLevel final : public types::Module {
-    BatteryLevel(modules::BatteryInterface& batteryIterface);
+    BatteryLevel(interfaces::BatteryInterface& batteryIterface);
     std::string printModule() override;
 
 private:
     std::string getBatteryLevel();
-    modules::BatteryInterface& batteryInterface;
+    interfaces::BatteryInterface& batteryInterface;
 };
 }
