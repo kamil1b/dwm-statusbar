@@ -1,1 +1,2 @@
 add_subdirectory(battery_interface)
+add_subdirectory(dwm_interface)

@@ -1,4 +1,3 @@
-add_subdirectory(external_api)
 add_subdirectory(interfaces)
 add_subdirectory(modules)
 add_subdirectory(status_bar)
@@ -9,7 +8,7 @@ add_executable(dwm-statusbar
 )
 
 target_link_libraries(dwm-statusbar
-    external_api::dwm
+    interfaces::dwm_interface
     modules::battery
     modules::separator
     modules::time

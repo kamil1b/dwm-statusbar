@@ -1,19 +1,20 @@
-set(MODULE_NAME dwm)
+set(MODULE_NAME dwm_interface)
 project(${MODULE_NAME} CXX)
 
 message(STATUS "Configuring ${MODULE_NAME}")
 
 set(SOURCES
-    src/Dwm.cpp
+    src/ConcreteDwmInterface.cpp
 )
 
 set(HEADERS
-    include/external_api/Dwm.hpp
+    include/interfaces/dwm_interface/ConcreteDwmInterface.hpp
+    include/interfaces/dwm_interface/DwmInterface.hpp
 )
 
 add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})
 
-add_library(external_api::${MODULE_NAME} ALIAS ${MODULE_NAME})
+add_library(interfaces::${MODULE_NAME} ALIAS ${MODULE_NAME})
 
 target_include_directories(${MODULE_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
