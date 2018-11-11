@@ -11,6 +11,7 @@ namespace {
 interfaces::ConcreteBatteryInterface batteryInterface {};
 modules::BatteryLevel batteryLevelModule {
     batteryInterface,
+    { "", "%" },
 };
 modules::BatteryStatus batteryStatusModule {
     {},

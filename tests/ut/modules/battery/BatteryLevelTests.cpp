@@ -5,7 +5,7 @@
 #include "modules/BatteryLevel.hpp"
 
 namespace {
-std::string endSign{"%"};
+modules::BatterySigns signs{"", "%"};
 }
 
 struct BatteryLevelFixture : public ::testing::TestWithParam<int> {
@@ -13,12 +13,13 @@ struct BatteryLevelFixture : public ::testing::TestWithParam<int> {
     helpers::mocks::BatteryInterfaceMock batteryInterfaceMock;
 
    protected:
-    BatteryLevelFixture() : batteryLevelModule(batteryInterfaceMock) {}
+    BatteryLevelFixture() : batteryLevelModule(batteryInterfaceMock, signs) {}
 };
 
 TEST_P(BatteryLevelFixture, GetBatteryLevel) {
     const auto batteryLevel = std::to_string(GetParam());
-    const auto expectedBatteryLevel = batteryLevel + endSign;
+    const auto expectedBatteryLevel =
+        signs.batterySign + batteryLevel + signs.batteryPercentSign;
     EXPECT_CALL(batteryInterfaceMock, getBatteryLevel())
         .WillOnce(::testing::Return(batteryLevel));
 
