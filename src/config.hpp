@@ -1,5 +1,6 @@
 #pragma once
 #include "interfaces/battery_interface/ConcreteBatteryInterface.hpp"
+#include "interfaces/time_interface/ConcreteTimeInterface.hpp"
 #include "modules/BatteryLevel.hpp"
 #include "modules/BatteryStatus.hpp"
 #include "modules/Separator.hpp"
@@ -9,6 +10,8 @@
 
 namespace {
 interfaces::ConcreteBatteryInterface batteryInterface {};
+interfaces::ConcreteTimeInterface timeInterface {};
+
 modules::BatteryLevel batteryLevelModule {
     batteryInterface,
     { "", "%" },
@@ -17,7 +20,7 @@ modules::BatteryStatus batteryStatusModule {
     {},
     batteryInterface,
 };
-modules::Time timeModule {};
+modules::Time timeModule { timeInterface };
 modules::Separator separator {};
 }
 
