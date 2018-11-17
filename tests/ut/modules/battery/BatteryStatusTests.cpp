@@ -32,7 +32,7 @@ struct BatteryStatusFixture : public ::testing::TestWithParam<testParam> {
 
    protected:
     BatteryStatusFixture()
-        : batteryStatus(statusLabels, batteryInterfaceMock) {}
+        : batteryStatus(batteryInterfaceMock, statusLabels) {}
 };
 
 TEST_P(BatteryStatusFixture, SelectLabel) {

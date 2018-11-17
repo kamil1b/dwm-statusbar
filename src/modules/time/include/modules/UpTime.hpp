@@ -4,7 +4,7 @@
 
 namespace modules {
 struct UpTime final : public types::Module {
-    explicit UpTime(interfaces::TimeInterface& timeInterface);
+    explicit UpTime(interfaces::TimeInterface& interface);
     std::string printModule() override;
 
 private:

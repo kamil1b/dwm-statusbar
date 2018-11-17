@@ -4,7 +4,7 @@
 namespace status_bar {
 class StatusBar {
 public:
-    explicit StatusBar(BarSegments&& segments);
+    explicit StatusBar(BarSegments&& barSegments);
 
     std::string getBar() const;
 

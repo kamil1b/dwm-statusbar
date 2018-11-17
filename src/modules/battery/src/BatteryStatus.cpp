@@ -19,10 +19,9 @@ std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, con
 } // namespace
 
 modules::BatteryStatus::BatteryStatus(
-    const types::BatteryStatusLabels& statusLabels,
-    interfaces::BatteryInterface& batteryInterface)
-    : statusLabels { statusLabels }
-    , batteryInterface { batteryInterface }
+    interfaces::BatteryInterface& interface, const types::BatteryStatusLabels& batteryStatusLabels)
+    : statusLabels { batteryStatusLabels }
+    , batteryInterface { interface }
 {
 }
 

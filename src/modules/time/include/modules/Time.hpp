@@ -4,7 +4,7 @@
 
 namespace modules {
 struct Time final : public types::Module {
-    explicit Time(interfaces::TimeInterface& timeInterface);
+    explicit Time(interfaces::TimeInterface& interface);
     std::string printModule() override;
 
 private:

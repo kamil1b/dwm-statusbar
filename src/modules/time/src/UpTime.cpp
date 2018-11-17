@@ -32,8 +32,8 @@ auto getHours(T duration)
 }
 } //namespace
 
-modules::UpTime::UpTime(interfaces::TimeInterface& timeInterface)
-    : timeInterface { timeInterface }
+modules::UpTime::UpTime(interfaces::TimeInterface& interface)
+    : timeInterface { interface }
     , startTimePoint { timeInterface.actualTime() }
 {
 }

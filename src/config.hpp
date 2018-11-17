@@ -18,8 +18,8 @@ modules::BatteryLevel batteryLevelModule {
     { "", "%" },
 };
 modules::BatteryStatus batteryStatusModule {
-    {},
     batteryInterface,
+    {},
 };
 modules::Time timeModule { timeInterface };
 modules::UpTime upTimeModule { timeInterface };
