@@ -1,8 +1,8 @@
 #include "modules/BatteryLevel.hpp"
 
-modules::BatteryLevel::BatteryLevel(interfaces::BatteryInterface& batteryInterface, const modules::BatterySigns& signs)
-    : batteryInterface { batteryInterface }
-    , signs { signs }
+modules::BatteryLevel::BatteryLevel(interfaces::BatteryInterface& interface, const modules::BatterySigns& batterySigns)
+    : batteryInterface { interface }
+    , signs { batterySigns }
 {
 }
 

@@ -4,8 +4,8 @@
 #include <iomanip>
 #include <sstream>
 
-modules::Time::Time(interfaces::TimeInterface& timeInterface)
-    : timeInterface { timeInterface }
+modules::Time::Time(interfaces::TimeInterface& interface)
+    : timeInterface { interface }
 {
 }
 

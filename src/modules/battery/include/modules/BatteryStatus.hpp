@@ -7,8 +7,7 @@
 namespace modules {
 struct BatteryStatus final : public types::Module {
     BatteryStatus(
-        const types::BatteryStatusLabels& statusLabels,
-        interfaces::BatteryInterface& batteryInterface);
+        interfaces::BatteryInterface& interface, const types::BatteryStatusLabels& batteryStatusLabels);
     std::string printModule() override;
 
 private:
