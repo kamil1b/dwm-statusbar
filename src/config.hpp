@@ -5,6 +5,7 @@
 #include "modules/BatteryStatus.hpp"
 #include "modules/Separator.hpp"
 #include "modules/Time.hpp"
+#include "modules/UpTime.hpp"
 #include "status_bar/BarSegment.hpp"
 #include <memory>
 
@@ -21,6 +22,7 @@ modules::BatteryStatus batteryStatusModule {
     batteryInterface,
 };
 modules::Time timeModule { timeInterface };
+modules::UpTime upTimeModule { timeInterface };
 modules::Separator separator {};
 }
 
@@ -29,6 +31,8 @@ status_bar::BarSegments segments {
         status_bar::addSegment(batteryStatusModule),
         status_bar::addSegment(separator),
         status_bar::addSegment(batteryLevelModule),
+        status_bar::addSegment(separator),
+        status_bar::addSegment(upTimeModule),
         status_bar::addSegment(separator),
         status_bar::addSegment(timeModule),
     },

@@ -1,5 +1,6 @@
 add_executable(${PROJECT_NAME}-time-ut
     TimeModuleTests.cpp
+    UpTimeModuleTests.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}-time-ut
