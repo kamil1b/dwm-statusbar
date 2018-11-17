@@ -5,10 +5,12 @@ message(STATUS "Configuring ${MODULE_NAME}")
 
 set(SOURCES
     src/Time.cpp
+    src/UpTime.cpp
 )
 
 set(HEADERS
     include/modules/Time.hpp
+    include/modules/UpTime.hpp
 )
 
 add_library(${MODULE_NAME} STATIC ${SOURCES} ${HEADERS})
