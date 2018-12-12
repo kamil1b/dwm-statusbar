@@ -8,7 +8,7 @@
 interfaces::ConcreteDwmInterface::ConcreteDwmInterface()
 {
     Display* dpy = XOpenDisplay(nullptr);
-    if (dpy == nullptr) {
+    if (dpy == NULL) {
         throw std::runtime_error { "XOpenDisplay: Failed to open display" };
     }
     display = std::make_unique<Display>(*dpy);
