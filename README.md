@@ -4,8 +4,8 @@
 
 ## Requirement
 
-- cmake
-- compiler with c++17 support
+  - cmake
+  - compiler with c++17 support
 
 ## Build
 
