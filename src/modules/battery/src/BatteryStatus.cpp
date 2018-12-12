@@ -28,7 +28,7 @@ modules::BatteryStatus::BatteryStatus(
 std::string modules::BatteryStatus::getBatteryStatus() const
 {
     const auto batteryStatus = batteryInterface.getBatteryStatus();
-    return getBatteryStatusLabel(batteryStatus, {});
+    return getBatteryStatusLabel(batteryStatus, statusLabels);
 }
 
 std::string modules::BatteryStatus::printModule()

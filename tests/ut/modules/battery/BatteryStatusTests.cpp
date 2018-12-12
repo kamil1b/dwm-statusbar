@@ -7,9 +7,9 @@
 #include "types/BatteryStatusLabels.hpp"
 
 namespace {
-std::string dischargingLabel{"D"};
-std::string chargingLabel{"C"};
-std::string acLabel{"AC"};
+std::string dischargingLabel{"1"};
+std::string chargingLabel{"2"};
+std::string acLabel{"3"};
 types::BatteryStatusLabels statusLabels{
     dischargingLabel,
     chargingLabel,
