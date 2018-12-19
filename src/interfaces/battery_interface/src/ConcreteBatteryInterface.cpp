@@ -15,8 +15,6 @@ types::BatteryStatus convertToBatteryStatus(const std::string& batteryStatus)
         return types::BatteryStatus::Charging;
     }
     return types::BatteryStatus::AC;
-
-    //TODO: add error handling
 }
 
 std::string getBatteryData(const std::filesystem::path& dataPath)
