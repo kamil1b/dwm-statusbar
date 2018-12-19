@@ -1,6 +1,7 @@
 # dwm-statusbar
 
 [![Build Status](https://travis-ci.com/kamil1b/dwm-statusbar.svg?branch=master)](https://travis-ci.com/kamil1b/dwm-statusbar)
+[![CodeFactor](https://www.codefactor.io/repository/github/kamil1b/dwm-statusbar/badge)](https://www.codefactor.io/repository/github/kamil1b/dwm-statusbar)
 
 ## Requirement
 
