@@ -1,11 +1,11 @@
 #include "interfaces/battery_interface/ConcreteBatteryInterface.hpp"
-#include <filesystem>
+#include <boost/filesystem.hpp>
 #include <fstream>
 
 namespace {
 
-const std::filesystem::path batteryStatusPath { "/sys/class/power_supply/BAT0/status" };
-const std::filesystem::path batteryLevelPath { "/sys/class/power_supply/BAT0/capacity" };
+const boost::filesystem::path batteryStatusPath { "/sys/class/power_supply/BAT0/status" };
+const boost::filesystem::path batteryLevelPath { "/sys/class/power_supply/BAT0/capacity" };
 
 types::BatteryStatus convertToBatteryStatus(const std::string& batteryStatus)
 {
@@ -17,9 +17,9 @@ types::BatteryStatus convertToBatteryStatus(const std::string& batteryStatus)
     return types::BatteryStatus::AC;
 }
 
-std::string getBatteryData(const std::filesystem::path& dataPath)
+std::string getBatteryData(const boost::filesystem::path& dataPath)
 {
-    std::ifstream batteryDataFile { dataPath };
+    std::ifstream batteryDataFile { dataPath.native() };
     std::string data;
     batteryDataFile >> data;
     batteryDataFile.close();
