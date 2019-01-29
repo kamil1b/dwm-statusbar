@@ -1,44 +1,30 @@
-sudo: required
+distr: trusty
 language: cpp
-distr: xenial
-
-stages:
-  - linting
-  - test
 
 matrix:
   include:
     - os: linux
       addons:
         apt:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-8
-            - libx11-dev
-            - libboost-all-dev
-      env:
-         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-    - os: linux
-      addons:
-        apt:
+          sources:
             - ubuntu-toolchain-r-test
           packages:
             - g++-7
             - libx11-dev
             - libboost-all-dev
       env:
-         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
     - os: linux
       addons:
         apt:
-            - ubuntu-toolchain-r-test
+          sources:
+            - llvm-toolchain-trusty-6.0
           packages:
-            - g++-6
+            - clang-6.0
             - libx11-dev
             - libboost-all-dev
       env:
-         - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-
+        - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
 before_install:
     - eval "${MATRIX_EVAL}"
 
@@ -48,13 +34,3 @@ script:
   - cmake ..
   - cmake --build . -- dwm-statusbar -j
   - cmake --build . -- ut -j
-
-jobs:
-  - stage: linting
-    addons:
-      apt:
-        - llvm-toolchain-trusty-6.0
-      packages:
-        - clang-format-6.0
-    script:
-      - clang-format -style=file
