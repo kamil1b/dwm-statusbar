@@ -24,5 +24,6 @@ target_include_directories(${MODULE_NAME} PUBLIC
 target_link_libraries(${MODULE_NAME}
     PRIVATE
         types
-        stdc++fs
+        ${Boost_SYSTEM_LIBRARY}
+        ${Boost_FILESYSTEM_LIBRARY}
 )
