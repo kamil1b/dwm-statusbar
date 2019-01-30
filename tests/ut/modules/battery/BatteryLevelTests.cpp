@@ -28,4 +28,4 @@ TEST_P(BatteryLevelFixture, GetBatteryLevel) {
 }
 
 INSTANTIATE_TEST_CASE_P(BatteryLevelTests, BatteryLevelFixture,
-                        ::testing::Range(5, 100, 5));
+                        ::testing::Range(5, 100, 5), );
