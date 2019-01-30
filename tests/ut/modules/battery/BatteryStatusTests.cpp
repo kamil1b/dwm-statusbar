@@ -45,4 +45,4 @@ TEST_P(BatteryStatusFixture, SelectLabel) {
 }
 
 INSTANTIATE_TEST_CASE_P(BatteryStatusTests, BatteryStatusFixture,
-                        ::testing::ValuesIn(testParams));
+                        ::testing::ValuesIn(testParams), );
