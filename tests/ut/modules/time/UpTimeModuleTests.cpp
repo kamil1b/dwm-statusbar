@@ -30,7 +30,7 @@ struct UpTimeModuleFixture : public ::testing::Test {
 };
 
 TEST_F(UpTimeModuleFixture, testOutputFormat) {
-    EXPECT_CALL(timeInterfaceMock, actualTime())
+    EXPECT_CALL(timeInterfaceMock, startTime())
         .WillOnce(::testing::Return(startTime));
 
     expectOutput({"Up 00:00:00"});
@@ -38,7 +38,7 @@ TEST_F(UpTimeModuleFixture, testOutputFormat) {
 
 TEST_F(UpTimeModuleFixture, testSecondsOutput) {
     interfaces::TimePoint timePoint{startTime + std::chrono::seconds{5}};
-    EXPECT_CALL(timeInterfaceMock, actualTime())
+    EXPECT_CALL(timeInterfaceMock, startTime())
         .WillOnce(::testing::Return(timePoint));
 
     expectOutput({"Up 00:00:05"});
@@ -46,7 +46,7 @@ TEST_F(UpTimeModuleFixture, testSecondsOutput) {
 
 TEST_F(UpTimeModuleFixture, testMinutsOutput) {
     interfaces::TimePoint timePoint{startTime + std::chrono::minutes{54}};
-    EXPECT_CALL(timeInterfaceMock, actualTime())
+    EXPECT_CALL(timeInterfaceMock, startTime())
         .WillOnce(::testing::Return(timePoint));
 
     expectOutput({"Up 00:54:00"});
@@ -54,7 +54,7 @@ TEST_F(UpTimeModuleFixture, testMinutsOutput) {
 
 TEST_F(UpTimeModuleFixture, testHoursOutput) {
     interfaces::TimePoint timePoint{startTime + std::chrono::hours{21}};
-    EXPECT_CALL(timeInterfaceMock, actualTime())
+    EXPECT_CALL(timeInterfaceMock, startTime())
         .WillOnce(::testing::Return(timePoint));
 
     expectOutput({"Up 21:00:00"});

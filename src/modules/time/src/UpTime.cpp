@@ -7,7 +7,6 @@ namespace {
 template <typename T>
 auto getSeconds(T duration)
 {
-
     const auto minutes = std::chrono::duration_cast<std::chrono::minutes>(duration);
     const auto seconds = duration - minutes;
 
@@ -17,7 +16,6 @@ auto getSeconds(T duration)
 template <typename T>
 auto getMinutes(T duration)
 {
-
     const auto hours = std::chrono::duration_cast<std::chrono::hours>(duration);
     const auto minutes = duration - hours;
 
@@ -27,14 +25,13 @@ auto getMinutes(T duration)
 template <typename T>
 auto getHours(T duration)
 {
-
     return std::chrono::duration_cast<std::chrono::hours>(duration).count();
 }
 } //namespace
 
 modules::UpTime::UpTime(interfaces::TimeInterface& interface)
     : timeInterface { interface }
-    , startTimePoint { timeInterface.actualTime() }
+    , startTimePoint { timeInterface.startTime() }
 {
 }
 

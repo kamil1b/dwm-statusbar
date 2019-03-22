@@ -8,5 +8,6 @@
 namespace interfaces {
 struct ConcreteTimeInterface final : interfaces::TimeInterface {
     interfaces::TimePoint actualTime() override;
+    interfaces::TimePoint startTime() override;
 };
 }
