@@ -20,7 +20,8 @@ std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, con
 
 modules::BatteryStatus::BatteryStatus(
     interfaces::BatteryInterface& interface, const types::BatteryStatusLabels& batteryStatusLabels)
-    : statusLabels { batteryStatusLabels }
+    : Module{std::chrono::milliseconds{2000}}
+    , statusLabels { batteryStatusLabels }
     , batteryInterface { interface }
 {
 }
@@ -31,7 +32,7 @@ std::string modules::BatteryStatus::getBatteryStatus() const
     return getBatteryStatusLabel(batteryStatus, statusLabels);
 }
 
-std::string modules::BatteryStatus::printModule()
+void modules::BatteryStatus::updateStatus()
 {
-    return getBatteryStatus();
+    moduleStatus = getBatteryStatus();
 }

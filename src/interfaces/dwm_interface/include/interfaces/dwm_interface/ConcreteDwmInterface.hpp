@@ -1,4 +1,3 @@
-#pragma once
 #include "interfaces/dwm_interface/DwmInterface.hpp"
 #include <X11/Xlibint.h>
 #include <memory>

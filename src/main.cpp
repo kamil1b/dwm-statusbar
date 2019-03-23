@@ -6,9 +6,8 @@
 
 namespace {
 using namespace std::chrono_literals;
-constexpr auto dalay { 500ms };
+constexpr auto delay { 300ms };
 interfaces::ConcreteDwmInterface dwmInterfaces {};
-
 }
 
 int main()
@@ -18,7 +17,7 @@ int main()
     };
 
     while (true) {
-        std::this_thread::sleep_for(dalay);
+        std::this_thread::sleep_for(delay);
         dwmInterfaces.printStatusBar(statusBar.getBar());
     }
     return 0;

@@ -1,11 +1,12 @@
 #include "modules/Separator.hpp"
 
 modules::Separator::Separator(std::string separatorSign)
-    : separator { separatorSign }
+    : Module{std::chrono::milliseconds{0}}
+    , separator { separatorSign }
 {
 }
 
-std::string modules::Separator::printModule()
+void modules::Separator::updateStatus()
 {
-    return separator;
+    moduleStatus = separator;
 }

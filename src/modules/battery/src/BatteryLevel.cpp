@@ -1,7 +1,8 @@
 #include "modules/BatteryLevel.hpp"
 
 modules::BatteryLevel::BatteryLevel(interfaces::BatteryInterface& interface, const modules::BatterySigns& batterySigns)
-    : batteryInterface { interface }
+    : Module{std::chrono::milliseconds{5000}}
+    , batteryInterface { interface }
     , signs { batterySigns }
 {
 }
@@ -12,7 +13,7 @@ std::string modules::BatteryLevel::getBatteryLevel()
     return signs.batterySign + batteryLevel + signs.batteryPercentSign;
 }
 
-std::string modules::BatteryLevel::printModule()
+void modules::BatteryLevel::updateStatus()
 {
-    return getBatteryLevel();
+    moduleStatus = getBatteryLevel();
 }

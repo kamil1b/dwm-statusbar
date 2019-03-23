@@ -4,7 +4,7 @@
 namespace modules {
 struct Separator final : public types::Module {
     explicit Separator(std::string separatorSign = " | ");
-    std::string printModule() override;
+    void updateStatus() override;
 
 private:
     const std::string separator;

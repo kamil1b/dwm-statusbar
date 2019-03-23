@@ -10,7 +10,7 @@ struct BatterySigns {
 };
 struct BatteryLevel final : public types::Module {
     BatteryLevel(interfaces::BatteryInterface& interface, const modules::BatterySigns& batterySigns);
-    std::string printModule() override;
+    void updateStatus() override;
 
 private:
     std::string getBatteryLevel();

@@ -5,7 +5,8 @@
 #include <sstream>
 
 modules::Time::Time(interfaces::TimeInterface& interface)
-    : timeInterface { interface }
+  : Module{std::chrono::milliseconds{400}}
+  , timeInterface { interface }
 {
 }
 
@@ -18,7 +19,7 @@ std::string modules::Time::actualTime()
     return ss.str();
 }
 
-std::string modules::Time::printModule()
+void modules::Time::updateStatus()
 {
-    return actualTime();
+    moduleStatus = actualTime();
 }

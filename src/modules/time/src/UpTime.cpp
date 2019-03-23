@@ -30,14 +30,15 @@ auto getHours(T duration)
 } //namespace
 
 modules::UpTime::UpTime(interfaces::TimeInterface& interface)
-    : timeInterface { interface }
+    : Module{std::chrono::milliseconds{300}}
+    , timeInterface { interface }
     , startTimePoint { timeInterface.startTime() }
 {
 }
 
-std::string modules::UpTime::printModule()
+void modules::UpTime::updateStatus()
 {
-    return getUpTime();
+    moduleStatus = getUpTime();
 }
 
 std::string modules::UpTime::getUpTime()
