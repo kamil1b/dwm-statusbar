@@ -6,8 +6,8 @@
 
 namespace modules {
 struct BatteryStatus final : public types::Module {
-    BatteryStatus(
-        interfaces::BatteryInterface& interface, const types::BatteryStatusLabels& batteryStatusLabels);
+    BatteryStatus(interfaces::BatteryInterface& interface,
+        const types::BatteryStatusLabels& batteryStatusLabels);
     void updateStatus() override;
 
 private:
@@ -15,4 +15,4 @@ private:
     const types::BatteryStatusLabels statusLabels;
     interfaces::BatteryInterface& batteryInterface;
 };
-}
+} // namespace modules

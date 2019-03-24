@@ -11,4 +11,4 @@ public:
 private:
     const BarSegments segments;
 };
-}
+} // namespace status_bar

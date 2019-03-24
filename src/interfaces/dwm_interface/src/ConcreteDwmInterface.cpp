@@ -20,9 +20,11 @@ interfaces::ConcreteDwmInterface::~ConcreteDwmInterface()
     XCloseDisplay(display.get());
 }
 
-void interfaces::ConcreteDwmInterface::printStatusBar(const std::string& statusBar)
+void interfaces::ConcreteDwmInterface::printStatusBar(
+    const std::string& statusBar)
 {
-    if (XStoreName(display.get(), DefaultRootWindow(display.get()), statusBar.c_str())
+    if (XStoreName(display.get(), DefaultRootWindow(display.get()),
+            statusBar.c_str())
         < 0) {
         throw std::runtime_error { "XStoreName: Allocation failed" };
     }

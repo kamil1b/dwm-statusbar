@@ -8,4 +8,4 @@ struct BatteryInterface {
     virtual std::string getBatteryLevel() = 0;
     virtual types::BatteryStatus getBatteryStatus() = 0;
 };
-}
+} // namespace interfaces

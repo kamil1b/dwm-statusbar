@@ -30,7 +30,7 @@ modules::UpTime upTimeModule { timeInterface };
 modules::Separator beginSeparator { " " };
 modules::Separator separator { "  " };
 modules::Separator endSeparator { " " };
-}
+} // namespace
 
 status_bar::BarSegments segments {
     {

@@ -27,19 +27,16 @@ auto getHours(T duration)
 {
     return std::chrono::duration_cast<std::chrono::hours>(duration).count();
 }
-} //namespace
+} // namespace
 
 modules::UpTime::UpTime(interfaces::TimeInterface& interface)
-    : Module{std::chrono::milliseconds{300}}
+    : Module { std::chrono::milliseconds { 300 } }
     , timeInterface { interface }
     , startTimePoint { timeInterface.startTime() }
 {
 }
 
-void modules::UpTime::updateStatus()
-{
-    moduleStatus = getUpTime();
-}
+void modules::UpTime::updateStatus() { moduleStatus = getUpTime(); }
 
 std::string modules::UpTime::getUpTime()
 {
@@ -50,6 +47,8 @@ std::string modules::UpTime::getUpTime()
     const auto hours = getHours(duration);
 
     std::stringstream ss;
-    ss << "Up " << std::setw(2) << std::setfill('0') << hours << ":" << std::setw(2) << std::setfill('0') << minutes << ":" << std::setw(2) << std::setfill('0') << seconds;
+    ss << "Up " << std::setw(2) << std::setfill('0') << hours << ":"
+       << std::setw(2) << std::setfill('0') << minutes << ":" << std::setw(2)
+       << std::setfill('0') << seconds;
     return ss.str();
 }

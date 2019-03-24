@@ -1,8 +1,8 @@
 #pragma once
-#include <string>
 #include <chrono>
-#include <thread>
 #include <mutex>
+#include <string>
+#include <thread>
 
 namespace types {
 struct Module {
@@ -21,4 +21,4 @@ private:
     std::thread executor;
     std::mutex mutex;
 };
-}
+} // namespace types

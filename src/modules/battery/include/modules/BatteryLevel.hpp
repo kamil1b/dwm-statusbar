@@ -9,7 +9,8 @@ struct BatterySigns {
     const std::string batteryPercentSign;
 };
 struct BatteryLevel final : public types::Module {
-    BatteryLevel(interfaces::BatteryInterface& interface, const modules::BatterySigns& batterySigns);
+    BatteryLevel(interfaces::BatteryInterface& interface,
+        const modules::BatterySigns& batterySigns);
     void updateStatus() override;
 
 private:
@@ -17,4 +18,4 @@ private:
     interfaces::BatteryInterface& batteryInterface;
     const BatterySigns signs;
 };
-}
+} // namespace modules

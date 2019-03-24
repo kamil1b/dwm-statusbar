@@ -7,4 +7,4 @@ struct ConcreteBatteryInterface final : public interfaces::BatteryInterface {
     std::string getBatteryLevel() override;
     types::BatteryStatus getBatteryStatus() override;
 };
-}
+} // namespace interfaces

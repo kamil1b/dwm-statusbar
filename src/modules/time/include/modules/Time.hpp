@@ -11,4 +11,4 @@ private:
     interfaces::TimeInterface& timeInterface;
     std::string actualTime();
 };
-}
+} // namespace modules

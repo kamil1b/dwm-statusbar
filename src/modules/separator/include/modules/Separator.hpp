@@ -9,4 +9,4 @@ struct Separator final : public types::Module {
 private:
     const std::string separator;
 };
-}
+} // namespace modules

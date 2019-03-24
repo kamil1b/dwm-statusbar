@@ -4,8 +4,12 @@
 
 namespace {
 
-const boost::filesystem::path batteryStatusPath { "/sys/class/power_supply/BAT0/status" };
-const boost::filesystem::path batteryLevelPath { "/sys/class/power_supply/BAT0/capacity" };
+const boost::filesystem::path batteryStatusPath {
+    "/sys/class/power_supply/BAT0/status"
+};
+const boost::filesystem::path batteryLevelPath {
+    "/sys/class/power_supply/BAT0/capacity"
+};
 
 types::BatteryStatus convertToBatteryStatus(const std::string& batteryStatus)
 {

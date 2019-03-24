@@ -12,4 +12,4 @@ private:
     interfaces::TimePoint startTimePoint;
     std::string getUpTime();
 };
-}
+} // namespace modules

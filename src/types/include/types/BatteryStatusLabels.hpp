@@ -8,4 +8,4 @@ struct BatteryStatusLabels {
     const std::string chargingLabel { "C" };
     const std::string acLabel { "AC" };
 };
-}
+} // namespace types

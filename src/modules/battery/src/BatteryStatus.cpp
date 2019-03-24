@@ -4,7 +4,9 @@
 #include <string>
 
 namespace {
-std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, const types::BatteryStatusLabels& batteryStatusLabels)
+std::string getBatteryStatusLabel(
+    const types::BatteryStatus& batteryStatus,
+    const types::BatteryStatusLabels& batteryStatusLabels)
 {
     switch (batteryStatus) {
     case types::BatteryStatus::Discharging:
@@ -19,8 +21,9 @@ std::string getBatteryStatusLabel(const types::BatteryStatus& batteryStatus, con
 } // namespace
 
 modules::BatteryStatus::BatteryStatus(
-    interfaces::BatteryInterface& interface, const types::BatteryStatusLabels& batteryStatusLabels)
-    : Module{std::chrono::milliseconds{2000}}
+    interfaces::BatteryInterface& interface,
+    const types::BatteryStatusLabels& batteryStatusLabels)
+    : Module { std::chrono::milliseconds { 2000 } }
     , statusLabels { batteryStatusLabels }
     , batteryInterface { interface }
 {

@@ -8,7 +8,7 @@ namespace {
 using namespace std::chrono_literals;
 constexpr auto delay { 300ms };
 interfaces::ConcreteDwmInterface dwmInterfaces {};
-}
+} // namespace
 
 int main()
 {

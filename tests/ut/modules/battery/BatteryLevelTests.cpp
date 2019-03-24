@@ -1,25 +1,28 @@
+#include "helpers/mocks/BatteryInterfaceMock.hpp"
+#include "modules/BatteryLevel.hpp"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <string>
-#include "helpers/mocks/BatteryInterfaceMock.hpp"
-#include "modules/BatteryLevel.hpp"
 
 namespace {
-modules::BatterySigns signs{"", "%"};
+modules::BatterySigns signs { "", "%" };
 }
 
 struct BatteryLevelFixture : public ::testing::TestWithParam<int> {
     modules::BatteryLevel batteryLevelModule;
     helpers::mocks::BatteryInterfaceMock batteryInterfaceMock;
 
-   protected:
-    BatteryLevelFixture() : batteryLevelModule(batteryInterfaceMock, signs) {}
+protected:
+    BatteryLevelFixture()
+        : batteryLevelModule(batteryInterfaceMock, signs)
+    {
+    }
 };
 
-TEST_P(BatteryLevelFixture, GetBatteryLevel) {
+TEST_P(BatteryLevelFixture, GetBatteryLevel)
+{
     const auto batteryLevel = std::to_string(GetParam());
-    const auto expectedBatteryLevel =
-        signs.batterySign + batteryLevel + signs.batteryPercentSign;
+    const auto expectedBatteryLevel = signs.batterySign + batteryLevel + signs.batteryPercentSign;
     EXPECT_CALL(batteryInterfaceMock, getBatteryLevel())
         .WillOnce(::testing::Return(batteryLevel));
 
@@ -28,4 +31,4 @@ TEST_P(BatteryLevelFixture, GetBatteryLevel) {
 }
 
 INSTANTIATE_TEST_CASE_P(BatteryLevelTests, BatteryLevelFixture,
-                        ::testing::Range(5, 100, 5), );
+    ::testing::Range(5, 100, 5), );
