@@ -1,5 +1,4 @@
 #include "modules/UpTime.hpp"
-#include <chrono>
 #include <iomanip>
 #include <sstream>
 
@@ -29,11 +28,13 @@ auto getHours(T duration)
 }
 } // namespace
 
-modules::UpTime::UpTime(interfaces::TimeInterface& interface)
-    : Module { std::chrono::milliseconds { 300 } }
+modules::UpTime::UpTime(interfaces::TimeInterface& interface,
+    std::chrono::milliseconds delay)
+    : Module { delay }
     , timeInterface { interface }
     , startTimePoint { timeInterface.startTime() }
 {
+    init();
 }
 
 void modules::UpTime::updateStatus() { moduleStatus = getUpTime(); }

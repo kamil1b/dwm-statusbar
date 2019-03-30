@@ -1,5 +1,7 @@
 #pragma once
 #include "interfaces/battery_interface/BatteryInterface.hpp"
+#include "types/BatteryStatus.hpp"
+#include <gmock/gmock.h>
 #include <string>
 
 namespace helpers {

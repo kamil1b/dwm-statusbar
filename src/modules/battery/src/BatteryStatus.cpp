@@ -22,11 +22,13 @@ std::string getBatteryStatusLabel(
 
 modules::BatteryStatus::BatteryStatus(
     interfaces::BatteryInterface& interface,
-    const types::BatteryStatusLabels& batteryStatusLabels)
-    : Module { std::chrono::milliseconds { 2000 } }
+    const types::BatteryStatusLabels& batteryStatusLabels,
+    std::chrono::milliseconds delay)
+    : Module { delay }
     , statusLabels { batteryStatusLabels }
     , batteryInterface { interface }
 {
+    init();
 }
 
 std::string modules::BatteryStatus::getBatteryStatus() const

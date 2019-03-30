@@ -1,6 +1,7 @@
 #pragma once
 #include "interfaces/battery_interface/BatteryInterface.hpp"
 #include "types/Module.hpp"
+#include <chrono>
 #include <memory>
 
 namespace modules {
@@ -9,8 +10,8 @@ struct BatterySigns {
     const std::string batteryPercentSign;
 };
 struct BatteryLevel final : public types::Module {
-    BatteryLevel(interfaces::BatteryInterface& interface,
-        const modules::BatterySigns& batterySigns);
+    BatteryLevel(interfaces::BatteryInterface&, const modules::BatterySigns&,
+        std::chrono::milliseconds);
     void updateStatus() override;
 
 private:

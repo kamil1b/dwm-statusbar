@@ -27,14 +27,10 @@ std::vector<testParam> testParams {
 } // namespace
 
 struct BatteryStatusFixture : public ::testing::TestWithParam<testParam> {
-    modules::BatteryStatus batteryStatus;
     helpers::mocks::BatteryInterfaceMock batteryInterfaceMock;
 
 protected:
-    BatteryStatusFixture()
-        : batteryStatus(batteryInterfaceMock, statusLabels)
-    {
-    }
+    BatteryStatusFixture() {}
 };
 
 TEST_P(BatteryStatusFixture, SelectLabel)
@@ -43,6 +39,11 @@ TEST_P(BatteryStatusFixture, SelectLabel)
     EXPECT_CALL(batteryInterfaceMock, getBatteryStatus())
         .WillOnce(::testing::Return(types::BatteryStatus::Charging));
 
+    modules::BatteryStatus batteryStatus {
+        batteryInterfaceMock,
+        statusLabels,
+        std::chrono::milliseconds { 0 },
+    };
     auto status = batteryStatus.printModule();
     EXPECT_EQ(status, chargingLabel);
 }

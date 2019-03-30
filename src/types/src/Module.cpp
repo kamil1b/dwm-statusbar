@@ -1,8 +1,8 @@
 #include "types/Module.hpp"
+#include <functional>
 
 types::Module::Module(std::chrono::milliseconds delay)
     : refreshDelay { delay }
-    , executor(&Module::refresh, this)
 {
 }
 
@@ -18,12 +18,24 @@ std::string types::Module::printModule()
 
 void types::Module::refresh()
 {
-    bool continueRefresh = refreshDelay != std::chrono::seconds { 0 };
-
-    do {
-        mutex.lock();
-        updateStatus();
-        mutex.unlock();
+    mutex.lock();
+    updateStatus();
+    mutex.unlock();
+}
+void types::Module::refreshing()
+{
+    while (true) {
+        refresh();
         std::this_thread::sleep_for(refreshDelay);
-    } while (continueRefresh);
+    }
+}
+
+void types::Module::init()
+{
+    bool continueRefresh = refreshDelay != std::chrono::seconds { 0 };
+    if (continueRefresh) {
+        executor = std::thread { &Module::refreshing, this };
+    } else {
+        refresh();
+    }
 }

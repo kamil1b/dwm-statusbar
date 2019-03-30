@@ -1,11 +1,13 @@
 #include "modules/BatteryLevel.hpp"
 
 modules::BatteryLevel::BatteryLevel(interfaces::BatteryInterface& interface,
-    const modules::BatterySigns& batterySigns)
-    : Module { std::chrono::milliseconds { 5000 } }
+    const modules::BatterySigns& batterySigns,
+    std::chrono::milliseconds delay)
+    : Module { delay }
     , batteryInterface { interface }
     , signs { batterySigns }
 {
+    init();
 }
 
 std::string modules::BatteryLevel::getBatteryLevel()

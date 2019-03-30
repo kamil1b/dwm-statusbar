@@ -16,6 +16,7 @@ interfaces::ConcreteTimeInterface timeInterface {};
 modules::BatteryLevel batteryLevelModule {
     batteryInterface,
     { " ", "%" },
+    std::chrono::milliseconds { 5000 },
 };
 modules::BatteryStatus batteryStatusModule {
     batteryInterface,
@@ -24,9 +25,10 @@ modules::BatteryStatus batteryStatusModule {
         { "" },
         { "ﮣ" },
     },
+    std::chrono::milliseconds { 2000 },
 };
-modules::Time timeModule { timeInterface };
-modules::UpTime upTimeModule { timeInterface };
+modules::Time timeModule { timeInterface, std::chrono::milliseconds { 400 } };
+modules::UpTime upTimeModule { timeInterface, std::chrono::milliseconds { 300 } };
 modules::Separator beginSeparator { " " };
 modules::Separator separator { "  " };
 modules::Separator endSeparator { " " };

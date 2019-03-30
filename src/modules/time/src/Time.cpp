@@ -1,13 +1,14 @@
 #include "modules/Time.hpp"
-#include <chrono>
 #include <ctime>
 #include <iomanip>
 #include <sstream>
 
-modules::Time::Time(interfaces::TimeInterface& interface)
-    : Module { std::chrono::milliseconds { 400 } }
+modules::Time::Time(interfaces::TimeInterface& interface,
+    std::chrono::milliseconds delay)
+    : Module { delay }
     , timeInterface { interface }
 {
+    init();
 }
 
 std::string modules::Time::actualTime()

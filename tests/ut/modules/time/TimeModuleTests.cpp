@@ -9,14 +9,10 @@ namespace {
 } // namespace
 
 struct TimeModuleFixture : public ::testing::Test {
-    modules::Time timeModule;
     helpers::mocks::TimeInterfaceMock timeInterfaceMock;
 
 protected:
-    TimeModuleFixture()
-        : timeModule { timeInterfaceMock }
-    {
-    }
+    TimeModuleFixture() {}
 };
 
 TEST_F(TimeModuleFixture, testTimeFormat)
@@ -31,6 +27,8 @@ TEST_F(TimeModuleFixture, testTimeFormat)
     std::stringstream ss;
     ss << std::put_time(std::localtime(&expectedTime), "%d.%m %R");
     std::string expectedOutput { ss.str() };
+    modules::Time timeModule { timeInterfaceMock, std::chrono::milliseconds { 0 } };
+
     const auto& output = timeModule.printModule();
     EXPECT_EQ(output, expectedOutput);
 }

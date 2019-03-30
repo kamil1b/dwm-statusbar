@@ -20,8 +20,6 @@ protected:
     {
         EXPECT_CALL(timeInterfaceMock, startTime())
             .WillOnce(::testing::Return(startTime));
-
-        upTimeModule = std::make_unique<modules::UpTime>(timeInterfaceMock);
     }
 
     void expectOutput(const std::string& expectedOutput)
@@ -36,6 +34,8 @@ TEST_F(UpTimeModuleFixture, testOutputFormat)
     EXPECT_CALL(timeInterfaceMock, actualTime())
         .WillOnce(::testing::Return(startTime));
 
+    upTimeModule = std::make_unique<modules::UpTime>(
+        timeInterfaceMock, std::chrono::milliseconds { 0 });
     expectOutput({ "Up 00:00:00" });
 }
 
@@ -45,6 +45,8 @@ TEST_F(UpTimeModuleFixture, testSecondsOutput)
     EXPECT_CALL(timeInterfaceMock, actualTime())
         .WillOnce(::testing::Return(timePoint));
 
+    upTimeModule = std::make_unique<modules::UpTime>(
+        timeInterfaceMock, std::chrono::milliseconds { 0 });
     expectOutput({ "Up 00:00:05" });
 }
 
@@ -54,6 +56,8 @@ TEST_F(UpTimeModuleFixture, testMinutsOutput)
     EXPECT_CALL(timeInterfaceMock, actualTime())
         .WillOnce(::testing::Return(timePoint));
 
+    upTimeModule = std::make_unique<modules::UpTime>(
+        timeInterfaceMock, std::chrono::milliseconds { 0 });
     expectOutput({ "Up 00:54:00" });
 }
 
@@ -63,5 +67,7 @@ TEST_F(UpTimeModuleFixture, testHoursOutput)
     EXPECT_CALL(timeInterfaceMock, actualTime())
         .WillOnce(::testing::Return(timePoint));
 
+    upTimeModule = std::make_unique<modules::UpTime>(
+        timeInterfaceMock, std::chrono::milliseconds { 0 });
     expectOutput({ "Up 21:00:00" });
 }
