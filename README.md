@@ -6,8 +6,9 @@
 ## Requirement
 
 - cmake
-- compiler with c++17 support
-- X11
+- compiler with c++14 support
+- X11 libs
+- boots - filesystem
 
 ## Build
 
