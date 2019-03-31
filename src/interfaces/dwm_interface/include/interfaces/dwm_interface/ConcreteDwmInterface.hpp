@@ -1,3 +1,4 @@
+#pragma once
 #include "interfaces/dwm_interface/DwmInterface.hpp"
 #include <memory>
 #include <string>

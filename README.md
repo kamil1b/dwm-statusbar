@@ -1,7 +1,7 @@
 # dwm-statusbar
 
 [![Build Status](https://travis-ci.com/kamil1b/dwm-statusbar.svg?branch=master)](https://travis-ci.com/kamil1b/dwm-statusbar)
-[![CodeFactor](https://www.codefactor.io/repository/github/kamil1b/dwm-statusbar/badge)](https://www.codefactor.io/repository/github/kamil1b/dwm-statusbar)
+[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/kamil1b/dwm-statusbar.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/kamil1b/dwm-statusbar/context:cpp)
 
 ## Requirement
 
